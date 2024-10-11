@@ -13,7 +13,14 @@ import java.util.regex.Pattern;
  */
 public final class ConverterTool {
 
+
+
+    
+
     /**
+     * 
+
+
      * Constructeur privé pour cacher celui déclaré par défaut en public.
      */
     private ConverterTool() {}
@@ -25,9 +32,17 @@ public final class ConverterTool {
      * @param binary Nombre binaire à traiter
      * @return Répresentation décimale du nombre, -1 si la conversion est impossible
      */
+  
     public static int binaryToDecimal(String binary) {
-        return -1;
+        try {
+            // Parse the binary string to decimal integer
+            return Integer.parseInt(binary, 2);
+        } catch (NumberFormatException e) {
+            // Return -1 for invalid binary strings
+            return -1;
+        }
     }
+    
 
     /**
      * Convertit un nombre décimal en sa représentation binaire.
@@ -36,7 +51,7 @@ public final class ConverterTool {
      * @return Répresentation binaire du nombre
      */
     public static String decimalToBinary(int decimal) {
-        return null;
+        return Integer.toBinaryString(decimal);
     }
 
     /**
@@ -82,11 +97,12 @@ public final class ConverterTool {
      * @return true si la chaîne passée en paramètre contient des symboles
      *         hexadécimaux, faux sinon
      */
+   
     public static boolean checkIfHexadecimal(String toCheck) {
-        // TODO vérification par l'utilisation d'une REGEX
-        return false;
+         // TODO vérification par l'utilisation d'une REGEX
+        return Pattern.matches("^[0-9A-Fa-f]+$", toCheck);
     }
-
+    
     /**
      * Vérifie si une chaîne de caractères en paramètre représente un nombre entier
      * 
@@ -96,6 +112,6 @@ public final class ConverterTool {
      */
     public static boolean checkIfDecimal(String toCheck) {
         // TODO vérification par l'utilisation d'une REGEX
-        return false;
+         return Pattern.matches("^-?\\d+$", toCheck);
     }
 }

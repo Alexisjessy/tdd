@@ -35,22 +35,57 @@ class ConverterToolTest {
 
         // 2. Test d'un autre donnée de test
         // ...
-
+        assertEquals(2, ConverterTool.binaryToDecimal("10"));
         // Bien faire attention de bien penser aux erreurs dans la conception du jeu de test
-    }
 
+        assertEquals(5, ConverterTool.binaryToDecimal("101")); 
+        assertEquals(0, ConverterTool.binaryToDecimal("0"));  
+        assertEquals(15, ConverterTool.binaryToDecimal("1111")); 
+        assertEquals(-1, ConverterTool.binaryToDecimal("102")); 
+    }
+ 
+    
     @DisplayName("Conversion des nombres décimaux en binaire")
     @Test
     void testDecimalToBinary() {
         // TODO : compléter le test
+
+        assertEquals("10", ConverterTool.decimalToBinary(2));  // 2 -> binary "10"
+        assertEquals("101", ConverterTool.decimalToBinary(5));  // 5 -> binary "101"
+        assertEquals("0", ConverterTool.decimalToBinary(0));    // 0 -> binary "0"
+        assertEquals("1111", ConverterTool.decimalToBinary(15)); // 15 -> binary "1111"
+
     }
-    
+
     @DisplayName("Vérification de la nature hexadécimale d'une chaîne de caractère")
     @Test
     void testIfHexadecimal() {
-        
-        // TODO : compléter le test
+        // Valid hexadecimal strings
+        assertEquals(true, ConverterTool.checkIfHexadecimal("1A"));
+        assertEquals(true, ConverterTool.checkIfHexadecimal("FF"));
+        assertEquals(true, ConverterTool.checkIfHexadecimal("0"));
+    
+        // Invalid hexadecimal strings
+        assertEquals(false, ConverterTool.checkIfHexadecimal("GHI"));
+        assertEquals(false, ConverterTool.checkIfHexadecimal("123G"));
     }
+    
 
     // TODO : ajouter les fonctions de test pour chacune de celles qui sont utilisées dans l'application
+    @DisplayName("Vérification si une chaîne de caractères représente un nombre entier (décimal)")
+@Test
+void testCheckIfDecimal() {
+    // Valid decimal numbers
+    assertEquals(true, ConverterTool.checkIfDecimal("123"));     // Positive integer
+    assertEquals(true, ConverterTool.checkIfDecimal("-456"));    // Negative integer
+    assertEquals(true, ConverterTool.checkIfDecimal("0"));       // Zero
+
+    // Invalid decimal numbers
+    assertEquals(false, ConverterTool.checkIfDecimal("12.34"));  // Decimal with a dot
+    assertEquals(false, ConverterTool.checkIfDecimal("abc"));    // Non-numeric characters
+    assertEquals(false, ConverterTool.checkIfDecimal("12a3"));   // Mix of numbers and letters
+    assertEquals(false, ConverterTool.checkIfDecimal(""));       // Empty string
+    assertEquals(false, ConverterTool.checkIfDecimal(" "));      // Just a space
+}
+
 }
