@@ -69,23 +69,35 @@ class ConverterToolTest {
         assertEquals(false, ConverterTool.checkIfHexadecimal("GHI"));
         assertEquals(false, ConverterTool.checkIfHexadecimal("123G"));
     }
-    
 
-    // TODO : ajouter les fonctions de test pour chacune de celles qui sont utilisées dans l'application
+
+
+
+
+    @DisplayName("Vérification de la nature hexadécimale d'une chaîne de caractère")
+    @Test
+    void testIfbinaryhexa() {
+        String bin3 = "1010";
+        assertEquals("3f2", ConverterTool.binaryToHexadecimal(bin3));
+    }
+    
+    
+        // TODO : ajouter les fonctions de test pour chacune de celles qui sont utilisées dans l'application
+
     @DisplayName("Vérification si une chaîne de caractères représente un nombre entier (décimal)")
 @Test
 void testCheckIfDecimal() {
     // Valid decimal numbers
-    assertEquals(true, ConverterTool.checkIfDecimal("123"));     // Positive integer
-    assertEquals(true, ConverterTool.checkIfDecimal("-456"));    // Negative integer
-    assertEquals(true, ConverterTool.checkIfDecimal("0"));       // Zero
+    assertEquals(true, ConverterTool.checkIfDecimal("123"));     
+    assertEquals(true, ConverterTool.checkIfDecimal("-456"));    
+    assertEquals(true, ConverterTool.checkIfDecimal("0"));       
 
     // Invalid decimal numbers
-    assertEquals(false, ConverterTool.checkIfDecimal("12.34"));  // Decimal with a dot
-    assertEquals(false, ConverterTool.checkIfDecimal("abc"));    // Non-numeric characters
-    assertEquals(false, ConverterTool.checkIfDecimal("12a3"));   // Mix of numbers and letters
-    assertEquals(false, ConverterTool.checkIfDecimal(""));       // Empty string
-    assertEquals(false, ConverterTool.checkIfDecimal(" "));      // Just a space
+    assertEquals(false, ConverterTool.checkIfDecimal("12.34")); 
+    assertEquals(false, ConverterTool.checkIfDecimal("abc"));    
+    assertEquals(false, ConverterTool.checkIfDecimal("12a3"));  
+    assertEquals(false, ConverterTool.checkIfDecimal(""));      
+    assertEquals(false, ConverterTool.checkIfDecimal(" "));      
 }
 
 }

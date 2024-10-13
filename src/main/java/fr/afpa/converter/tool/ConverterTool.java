@@ -62,9 +62,15 @@ public final class ConverterTool {
      * @return Répresentation héxadécimale du nombre
      */
     public static String binaryToHexadecimal(String binary) {
+        try {
+            int decimal = Integer.valueOf(binary);
+            String hex = Integer.toHexString(decimal);
+            return hex;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
-
     /**
      * Convertit un nombre décimal en sa représentation héxadécimale.
      * 
@@ -72,7 +78,7 @@ public final class ConverterTool {
      * @return Répresentation binaire du nombre
      */
     public static String decimalToHexadecimal(int decimal) {
-        return null;
+        return Integer.toHexString(decimal);
     }
 
     /**
